@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.android.myfirstmapapp">
-    <!--meta-data: opengl, api, google services 추가
-    permission internet/network state/ write external storage-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!--add opne gl uses-->
-    <uses-feature android:glEsversion="0x00020000"
-                  android:required="true"/>
 
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,15 +16,21 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
         <meta-data
-            android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCHcCQhphPdD9wor_hssVR6uiYghK55xUo"/>
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCHcCQhphPdD9wor_hssVR6uiYghK55xUo"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
     </application>
+
+    <!--meta-data: opengl, api, google services 추가
+    permission internet/network state/ write external storage-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 </manifest>
