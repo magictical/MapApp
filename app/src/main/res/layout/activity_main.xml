@@ -54,6 +54,34 @@
                 android:text="Hybrid"/>
             </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="0.02">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Seattle"
+                android:id="@+id/toSeattle"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/toNewYork"
+                android:layout_weight="1"
+                android:text="To NewYork"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/toDublin"
+                android:layout_weight="1"
+                android:text="To Dublin"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 </RelativeLayout>

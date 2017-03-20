@@ -1,5 +1,6 @@
 package com.example.android.myfirstmapapp;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.Map;
 
 import static com.example.android.myfirstmapapp.R.id.map;
+import static com.example.android.myfirstmapapp.R.id.toSeattle;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     GoogleMap my_map;
@@ -23,6 +25,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     LatLng seattle = new LatLng(47.6204, -122.3791);
     LatLng newyouk = new LatLng(40.7127, -74.0059);
     LatLng dublin = new LatLng(53.3478, 6.2597);
+
+    static final CameraPosition SEATTLE = CameraPosition.builder().target(new LatLng(47.6204, -122.3791))
+            .zoom(14)
+            .bearing(0)
+            .tilt(45)
+            .build();
+
+    static final CameraPosition NEWYORK = CameraPosition.builder().target(new LatLng(40.7127, -74.0059))
+            .zoom(14)
+            .bearing(0)
+            .tilt(45)
+            .build();
+
+    static final CameraPosition DUBLIN = CameraPosition.builder().target(new LatLng(53.3478, 6.2597))
+            .zoom(14)
+            .bearing(0)
+            .tilt(45)
+            .build();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +79,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         flyToSeattle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CameraPosition position = CameraPosition.builder().target(seattle).zoom(14).build();
-                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));
+                /*CameraPosition position = CameraPosition.builder().target(seattle).zoom(14).build();
+                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));*/
+                flyToTheWorld(SEATTLE);
             }
         });
 
@@ -67,8 +89,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         flyToNewYork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CameraPosition position = CameraPosition.builder().target(newyouk).zoom(14).build();
-                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));
+                /*CameraPosition position = CameraPosition.builder().target(newyouk).zoom(14).build();
+                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));*/
+                flyToTheWorld(NEWYORK);
             }
         });
 
@@ -76,8 +99,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         flyToDublin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CameraPosition position = CameraPosition.builder().target(dublin).zoom(14).build();
-                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));
+                /*CameraPosition position = CameraPosition.builder().target(dublin).zoom(14).build();
+                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));*/
+                flyToTheWorld(DUBLIN);
         }});
 
     }
@@ -89,7 +113,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng home = new LatLng(35.107244, 128.970783);
         CameraPosition position = CameraPosition.builder().target(home).zoom(14).build();
         my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));
+    }
 
-
+    public void flyToTheWorld(CameraPosition target) {
+        my_map.animateCamera(CameraUpdateFactory.newCameraPosition(target), 5000, null);
     }
 }
