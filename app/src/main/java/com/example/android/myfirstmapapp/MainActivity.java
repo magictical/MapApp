@@ -20,6 +20,9 @@ import static com.example.android.myfirstmapapp.R.id.map;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     GoogleMap my_map;
     boolean mapReady = false;
+    LatLng seattle = new LatLng(47.6204, -122.3791);
+    LatLng newyouk = new LatLng(40.7127, -74.0059);
+    LatLng dublin = new LatLng(53.3478, 6.2597);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,32 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 my_map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
             }
         });
+
+        Button flyToSeattle = (Button) findViewById(R.id.toSeattle);
+        flyToSeattle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CameraPosition position = CameraPosition.builder().target(seattle).zoom(14).build();
+                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));
+            }
+        });
+
+        Button flyToNewYork = (Button) findViewById(R.id.toNewYork);
+        flyToNewYork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CameraPosition position = CameraPosition.builder().target(newyouk).zoom(14).build();
+                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));
+            }
+        });
+
+        Button flyToDublin = (Button) findViewById(R.id.toDublin);
+        flyToDublin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CameraPosition position = CameraPosition.builder().target(dublin).zoom(14).build();
+                my_map.moveCamera(CameraUpdateFactory.newCameraPosition(position));
+        }});
 
     }
 
